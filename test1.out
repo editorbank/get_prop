@@ -1,0 +1,12 @@
+value1 from stdin
+-value2 from stdin-
+-value3 from stdin-
+key4=value4 from env
+--
+value6 from env
+value7 from env
+value8 from env
+value9 from env
+-value10 from env-
+-value10 from env-
+value1
