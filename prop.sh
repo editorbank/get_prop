@@ -7,7 +7,7 @@ function prop_value(){
 function prop_from(){
   key=$1
   while [ -n "$2" ] ; do
-    if [ "env" = "$2" ] ; then
+    if [ "--env" = "$2" ] ; then
       value=$( env | prop_value $key )
     else
       value=$( [ -r "$2" ] && cat "$2" | prop_value $key || true )
@@ -60,7 +60,7 @@ Output the value specified in the first parameter of the property from one or mo
 Use:
 prop.sh prop_from <key1> <file1> [ <file2> [...]]
 
-If the value is not found in the first specified file or it is empty, then the search is performed in the next one. To read values from environment variables, specify the literal `env`.
+If the value is not found in the first specified file or it is empty, then the search is performed in the next one. To read values from environment variables, specify the literal `--env`.
 '   ;;
     prop_export ) echo '
 Exporting a list of specified keys to environment variables.

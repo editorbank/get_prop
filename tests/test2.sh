@@ -3,7 +3,7 @@ set -e
 source ../prop.sh
 
 function prop(){
-  prop_from $1 env ./test.properties ./test2.properties /dev/stdin
+  prop_from $1 --env ./test.properties ./test2.properties /dev/stdin
 }
 
 function test1(){
