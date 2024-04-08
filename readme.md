@@ -1,4 +1,4 @@
 # prop.sh
 
 Shell script library for reading parameters from `*.properties` files.
-Based on the `sed` command.
+It is based only on the commands `sed`, `env`, `bash'.
