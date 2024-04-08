@@ -1,9 +1,9 @@
 set -e
 
-source ./get_prop.sh
+source ./prop.sh
 
 function prop(){
-  get_prop_from $1 env ./test.properties ./test2.properties /dev/stdin
+  prop_from $1 env ./test.properties ./test2.properties /dev/stdin
 }
 
 function test1(){

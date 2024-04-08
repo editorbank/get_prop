@@ -18,7 +18,7 @@ function prop_from(){
   echo $value
 }
 
-function export(){
+function prop_export(){
   keys=()
   froms=()
   prefix=""
@@ -47,7 +47,28 @@ function export(){
 }
 
 function --help(){
-  echo '
+  case "$1" in
+    prop_value ) echo '
+Output the value specified in the first parameter of the property from standard input to standard output.
+
+Use:
+cat ./file.properties | prop.sh prop_value <key1>
+'   ;;
+    prop_from ) echo '
+Output the value specified in the first parameter of the property from one or more files.
+
+Use:
+prop.sh prop_from <key1> <file1> [ <file2> [...]]
+
+If the value is not found in the first specified file or it is empty, then the search is performed in the next one. To read values from environment variables, specify the literal `env`.
+'   ;;
+    prop_export ) echo '
+Exporting a list of specified keys to environment variables.
+
+Use:
+prop.sh prop_export <key1>  [ <key2> [...]] -f <file1> [ <file2> [...]] [ --prefix <prefix> ] [ --suffix <suffix> ]
+'   ;;
+    *) echo '
 Shell script library for reading parameters from `*.properties` files.
 Based on the `sed` command.
 
@@ -56,6 +77,12 @@ prop.sh <command> [ <arg1> [ ... ]]
 
 List of available commands:'
 declare -F |cut -d" " -f3|sort|xargs -i echo -e "\t{}"
+echo '
+To view the help for each command, use:
+prop.sh --help <command>
+'
+    ;;
+  esac
 }
 
 [ -z "$1" ] || $@
