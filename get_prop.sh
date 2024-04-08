@@ -1,8 +1,10 @@
-function get_prop_stdin() {
+#!/bin/env bash
+
+function get_prop_stdin(){
   sed -n -r "s/^[ \t]*($1)[ \t]*=[ \t]*([\']([^\']+)[\']|[\"]([^\"]+)[\"]|([^ \t\'\"\r]+)|([^ \t\'\"\r]+([ \t]+[^ \t\'\"\r]+)+))[ \t\r]*$/\3\4\5\6/p"
 }
 
-function get_prop_from() {
+function get_prop_from(){
   key=$1
   while [ -n "$2" ] ; do
     if [ "env" = "$2" ] ; then
@@ -44,4 +46,16 @@ function export_prop_from(){
   done
 }
 
-[ -z "$1" ] || get_prop_from $@
+function --help(){
+  echo '
+Shell script library for reading parameters from `*.properties` files.
+Based on the `sed` command.
+
+Use:
+get_prop.sh <command> [ <arg1> [ ... ]]
+
+List of available commands:'
+declare -F |cut -d" " -f3|sort|xargs -i echo -e "\t{}"
+}
+
+[ -z "$1" ] || $@

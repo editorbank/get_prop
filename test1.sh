@@ -11,7 +11,7 @@ key5="value3 from env" echo "-$( env | grep key5 )-" # be empty
 key6="value6 from env" get_prop_from key6 env
 key7="value7 from env" bash -c "source ./get_prop.sh ; get_prop_from key7 env"
 env key8="value8 from env" bash -c "source ./get_prop.sh ; get_prop_from key8 env"
-env key9="value9 from env" bash ./get_prop.sh key9 env
+env key9="value9 from env" bash ./get_prop.sh get_prop_from key9 env
 
 export key10="value10 from env"
 echo -`get_prop_from key10 env`-
